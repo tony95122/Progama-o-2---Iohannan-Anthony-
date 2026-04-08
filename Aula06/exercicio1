@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class exercicio1 {
+    public static void main(String[] args) {
+        Scanner leitor = new Scanner(System.in);
+
+        // Lendo os dois nomes
+        System.out.print("Digite o primeiro nome: ");
+        String nome1 = leitor.nextLine();
+
+        System.out.print("Digite o segundo nome: ");
+        String nome2 = leitor.nextLine();
+
+        // Comparando com o método equals()
+        if (nome1.equals(nome2)) {
+            System.out.println("Os nomes são iguais!");
+        } else {
+            System.out.println("Os nomes são diferentes.");
+        }
+
+        leitor.close();
+    }
+}
+
+
