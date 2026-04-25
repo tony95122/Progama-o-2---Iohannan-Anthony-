@@ -1,0 +1,10 @@
+public class exercicio06 {
+    public static void main(String[] args) {
+        String nome = "iohannan";
+        int idade = 20;
+        double altura = 1.85;
+
+        System.out.printf("seu nome e %s voce tem %d de idade e %.2f de altura", nome , idade, altura);
+    }
+    
+}
