@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class projeto6 {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Digite o valor de 1L de gasolina");
+        double valor = ler.nextDouble();
+        System.out.println("Quanto vc possui para abstecer?");
+        double pessoa = ler.nextDouble();
+        double litrospossiveis = pessoa / valor;
+
+        if (pessoa < valor) {
+            System.out.println("Você n pode abastecer");
+        } else {
+            System.out.println("Você pode abastecer");
+
+            System.out.printf("Com %.2f, Você consegue comprar %.2f litros.%n", pessoa, litrospossiveis);
+        }
+        ler.close();
+    }
+
+}
