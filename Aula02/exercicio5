@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class projeto7 {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        double precoCheio = 40.0;
+        System.out.println("Você é meia M ou inteira I ?");
+        String tipo = ler.next();
+
+        if (tipo.equalsIgnoreCase("M")) {
+            double total = precoCheio / 2;
+            System.out.println("O valor da meia é: " + total);
+
+        } else {
+            System.out.println("O valor da inteira é: " + precoCheio);
+        }
+
+        ler.close();
+    }
+
+}
