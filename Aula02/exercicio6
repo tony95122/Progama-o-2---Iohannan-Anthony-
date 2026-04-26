@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class projeto8 {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Digite o codigo do produto 1:");
+        int codigo1 = ler.nextInt();
+        System.out.println("Digite o valor unitario do produto 1");
+        double valor1 = ler.nextDouble();
+        System.out.println("Digite a quantidade do produto 1");
+        int quantidade1 = ler.nextInt();
+
+        System.out.println("Digite o codigo do produto 2");
+        int codigo2 = ler.nextInt();
+        System.out.println("Digite o valor unitario do produto 2");
+        double valor2 = ler.nextDouble();
+        System.out.println("Digite a quantidade do produto 2");
+        int quantidade2 = ler.nextInt();
+
+        System.out.println("Digite a taxa de porcentagem da compra");
+        double taxa = ler.nextDouble();
+
+        double total = (valor1 * quantidade1 + valor2 * quantidade2) * (taxa / 100 + 1);
+        System.out.println("---Resumo da compra---");
+        System.out.println("Produto 1(codigo:" + codigo1 + ") pronto.");
+        System.out.println("Produto 2(codigo:" + codigo2 + ") pronto.");
+        System.out.printf("Esse é o total da sua compra (com taxa de %.1f%%) é: R$ %.2f%n", taxa, total);
+        
+
+        ler.close();
+    }
+
+}
