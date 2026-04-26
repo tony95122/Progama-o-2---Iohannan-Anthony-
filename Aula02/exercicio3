@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class projeto5 {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+
+        System.out.println("Qual valor do produto?");
+        double valor = ler.nextDouble();
+        System.out.println("Qual a quantidade do produto");
+        int quantidade = ler.nextInt();
+
+        double total = valor * quantidade;
+        System.out.println("O valor da sua compra é " + total);
+
+        if (total > 100) {
+            total = total - (total * 0.08);
+            System.out.println("Será aplicado um desconto de 8% na sua compra " + total);
+
+        }
+
+        ler.close();
+    }
+
+}
