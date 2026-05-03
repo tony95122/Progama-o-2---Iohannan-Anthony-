@@ -1,4 +1,4 @@
-public class EXERCICIO1 { 
+public class exercicio1 { 
 
     public static double EXERCICIO1 (double a, double b){
         return Math.sqrt(a * a + b * b);
