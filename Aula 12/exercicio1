@@ -1,4 +1,4 @@
-public class Aluno {
+public class exercicio1 {
     String nome;
     double n1, n2, trab;
 
