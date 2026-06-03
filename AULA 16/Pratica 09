@@ -1,0 +1,165 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+class Funcionario {
+    private String nome;
+    private String cpf;
+    private Double salario;
+    private String DataNascimento;
+
+    public Funcionario(String nome, String cpf, Double salario, String DataNascimento){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.salario = salario;
+        this.DataNascimento = DataNascimento;
+
+    }
+    public String getNome() {return nome;}
+    public String getCpF() {return cpf;}
+    public String getDataNascimento () {return DataNascimento;}
+
+    public Double getSalario () {
+        return this.salario;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome:" + nome + "| CPF: " + cpf + " | Data Nasc: " + DataNascimento;
+    }
+}
+
+class gerente extends Funcionario{
+    public gerente(String nome, String cpf, Double salario, String DataNascimento){
+        super(nome, cpf, salario, DataNascimento);
+        
+    
+    }
+    @Override
+    public Double getSalario() {
+        return super.getSalario() + 2000.00;
+    }
+    @Override
+    public String toString(){
+        return super.toString() + "|Cargo: gerente| Salario total: R$ " + String.format("%.2f",getSalario());
+    }
+    
+}
+class Atendente extends Funcionario{
+    private Double comissao;
+    
+    public Atendente(String nome, String cpf, Double salario, String DataNascimento, Double comissao){
+        super(nome,cpf,salario,DataNascimento);
+        this.comissao = comissao;
+    }
+    public Double getComissao(){return comissao;}
+
+    @Override
+    public Double getSalario(){
+        return super.getSalario() + this.comissao;
+
+    }
+    @Override
+    public String toString(){
+        return super.toString() + "|Cargo: Atendente | Comissao: R$ " + comissao + "| Salario total: R$" + String.format( "%.2f", getSalario());
+    }
+
+
+}
+
+public class SistemaFuncionarios {
+    public static void main(String[] args) {
+        ArrayList<Funcionario> listaFuncionarios = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int opcao = 0;
+
+        do {
+            System.out.println("\n=== MENU DE OPÇÕES ===");
+            System.out.println("1. Adicionar Gerente");
+            System.out.println("2. Adicionar Atendente");
+            System.out.println("3. Listar todos os funcionários");
+            System.out.println("4. Mostrar salário de funcionário (por CPF)");
+            System.out.println("5. Sair");
+            System.out.print("Escolha uma opção: ");
+            
+            opcao = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (opcao) {
+                case 1:
+                    System.out.print("Nome do Gerente: ");
+                    String nomeG = scanner.nextLine();
+                    System.out.print("CPF: ");
+                    String cpfG = scanner.nextLine();
+                    System.out.print("Salário Base: ");
+                    double salarioG = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.print("Data de Nascimento: ");
+                    String dataG = scanner.nextLine();
+
+                    listaFuncionarios.add(new gerente(nomeG, cpfG, salarioG, dataG));
+                    System.out.println("Gerente adicionado com sucesso!");
+                    break;
+
+                case 2:
+                    System.out.print("Nome do Atendente: ");
+                    String nomeA = scanner.nextLine();
+                    System.out.print("CPF: ");
+                    String cpfA = scanner.nextLine();
+                    System.out.print("Salário Base: ");
+                    double salarioA = scanner.nextDouble();
+                    System.out.print("Valor da Comissão: ");
+                    double comissaoA = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.print("Data de Nascimento: ");
+                    String dataA = scanner.nextLine();
+
+                    listaFuncionarios.add(new Atendente(nomeA, cpfA, salarioA, dataA, comissaoA));
+                    System.out.println("Atendente adicionado com sucesso!");
+                    break;
+
+                case 3:
+                    System.out.println("\n--- LISTA DE FUNCIONÁRIOS ---");
+                    if (listaFuncionarios.isEmpty()) {
+                        System.out.println("Nenhum funcionário cadastrado.");
+                    } else {
+                        
+                        for (Funcionario f : listaFuncionarios) {
+                            System.out.println(f);
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Digite o CPF do funcionário: ");
+                    String cpfBusca = scanner.nextLine();
+                    boolean encontrado = false;
+
+                    for (Funcionario f : listaFuncionarios) {
+                        if (f.getCpF().equals(cpfBusca)) {
+                            
+                            System.out.println("Funcionário: " + f.getNome());
+                            System.out.printf("Salário Calculado: R$ %.2f\n", f.getSalario());
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    if (!encontrado) {
+                        System.out.println("Funcionário com o CPF informado não foi encontrado.");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Saindo do sistema...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+        } while (opcao != 5);
+
+        scanner.close();
+    }
+}
