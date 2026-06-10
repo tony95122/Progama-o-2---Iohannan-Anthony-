@@ -1,0 +1,58 @@
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEstoque;
+
+    public Produto(String nome, double preco, int quantidadeEstoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+
+    public void exibirInfo() {
+        System.out.println("--- Informações do Produto ---");
+        System.out.println("Nome: " + this.nome);
+        System.out.printf("Preço: R$ %.2f\n", this.preco);
+        System.out.println("Quantidade em Estoque: " + this.quantidadeEstoque);
+    }
+
+    public double calcularValorTotalEmEstoque() {
+        return this.preco * this.quantidadeEstoque;
+    }
+
+    public void adicionarEstoque(int quantidade) {
+        if (quantidade > 0) {
+            this.quantidadeEstoque += quantidade;
+            System.out.println(quantidade + " unidades adicionadas ao estoque de " + this.nome + ".");
+        } else {
+            System.out.println("A quantidade a ser adicionada deve ser maior que zero.");
+        }
+    }
+}
+
+
+public class TesteProduto {
+    public static void main(String[] args) {
+        Produto produto1 = new Produto("Notebook Gamer", 4500.00, 10);
+        Produto produto2 = new Produto("Mouse Sem Fio", 120.00, 50);
+
+        System.out.println("Exibindo produtos iniciais:");
+        produto1.exibirInfo();
+        System.out.println();
+        produto2.exibirInfo();
+        System.out.println("\n-----------------------------------\n");
+
+        double valorTotalP1 = produto1.calcularValorTotalEmEstoque();
+        System.out.printf("Valor total de %s em estoque: R$ %.2f\n", "Notebook Gamer", valorTotalP1);
+        System.out.println("\n-----------------------------------\n");
+
+        System.out.println("Atualizando estoque...");
+        produto2.adicionarEstoque(15);
+        System.out.println();
+
+        System.out.println("Informações atualizadas do Produto 2:");
+        produto2.exibirInfo();
+        
+        System.out.printf("Novo valor total de %s em estoque: R$ %.2f\n", "Mouse Sem Fio", produto2.calcularValorTotalEmEstoque());
+    }
+}
