@@ -1,0 +1,70 @@
+public class Retangulo {
+    private double altura = 1.0;
+    private double largura = 1.0;
+
+    public Retangulo() {
+    }
+
+    public double getAltura() {
+        return this.altura;
+    }
+
+    public void setAltura(double altura) {
+        if (altura > 0.0 && altura < 20.0) {
+            this.altura = altura;
+        } else {
+            System.out.println("Erro: A altura deve ser maior que 0.0 e menor que 20.0.");
+        }
+    }
+
+    public double getLargura() {
+        return this.largura;
+    }
+
+    public void setLargura(double largura) {
+        if (largura > 0.0 && largura < 20.0) {
+            this.largura = largura;
+        } else {
+            System.out.println("Erro: A largura deve ser maior que 0.0 e menor que 20.0.");
+        }
+    }
+
+    public double calcularPerimetro() {
+        return 2 * (this.altura + this.largura);
+    }
+
+    public double calcularArea() {
+        return this.altura * this.largura;
+    }
+}
+
+
+
+public class TesteRetangulo {
+    public static void main(String[] args) {
+        Retangulo r1 = new Retangulo();
+        System.out.println("--- Retângulo Padrão ---");
+        System.out.println("Altura: " + r1.getAltura());
+        System.out.println("Largura: " + r1.getLargura());
+        System.out.println("Perímetro: " + r1.calcularPerimetro());
+        System.out.println("Área: " + r1.calcularArea());
+        System.out.println();
+
+        System.out.println("--- Modificando Valores ---");
+        r1.setAltura(5.5);
+        r1.setLargura(10.2);
+        System.out.println("Nova Altura: " + r1.getAltura());
+        System.out.println("Nova Largura: " + r1.getLargura());
+        System.out.println("Novo Perímetro: " + r1.calcularPerimetro());
+        System.out.println("Nova Área: " + r1.calcularArea());
+        System.out.println();
+
+        System.out.println("--- Testando Validações ---");
+        r1.setAltura(25.0);
+        r1.setLargura(-2.5);
+        
+        System.out.println("\nValores finais permanecem inalterados:");
+        System.out.println("Altura: " + r1.getAltura());
+        System.out.println("Largura: " + r1.getLargura());
+    }
+}
